@@ -2,6 +2,8 @@
 RRadout is a Python module for Autodesk Revit, exporting geometry data to the 
 <a href="http://www.radiance-online.org/">Radiance</a> lighting simulation package.
 
+<br>Warning:</br> This is beta software! (Release 0.2 has advanced from "Proof of Concept" to "Prototype" status.)
+
 Basic features of RRadout are:
 
 <ul TYPE=SQUARE>
