@@ -1,0 +1,22 @@
+Installation
+
+To install as a macro, select the "Manage" tab, click on "Macros". Select the "Application" tab in the opening dialog, and press "Create Module". Give your new module a suitable name, chose "Python" as a language and press "Ok". The SharpDevelop IDE should open with a new project containing boilerplate code. Replace that with the contents of my file and press F8 to compile.
+
+Now open the "Macros" dialog again, and your module will have sprouted three macros:
+
+ * ExportTopoToObj
+ * ExportTopoToRadiance
+ * ExportToRadiance 
+
+Select one of those and press "Run" (this only works if the current view is a 3D-view).
+Configuration
+Currently all relevant configuration happens in the code, near the top of the file. Configuration options are:
+
+ * Metric or Imperial
+ * Output file name (default: "revout.rad" on your desktop)
+ * Output file name for topography as Radiance triangles (default:
+   "revout_topo.rad" on your desktop)
+ * Output file name for topography as Wavefront Object files
+   (default: "revout_topomesh.rad" on your desktop; one or several numbered
+   *.obj files with same base name) 
+

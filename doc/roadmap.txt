@@ -1,0 +1,71 @@
+### Basic architecture of a possible framework for RRadout.
+### 
+### This would allow to export different file formats by just using
+### a different extended base class with a small number of methods.
+
+
+
+RRadout.xml
+	# RPS-Addin manifest
+	# defining three ribbon buttons calling the scripts below
+
+
+
+### Generic base class for methods common to all exporters.
+
+common.py
+	# mixin for generic common operations
+	class CommonBaseExportContext(IExportContext):
+
+
+
+### Extended base classes for extracting certain types of data.
+
+topo.py
+	# mixin to extract topography as triangles
+	class TopoExportContext(CommonBaseExportContext):
+
+geom.py
+	# mixin to extract standard geometry
+	class GeomExportContext(CommonBaseExportContext):
+
+
+
+### Mixins understanding how to write specific data formats
+
+radiance.py
+	# mixin for writing Radiance format data
+	class RadBaseExportMixin():
+
+objfile.py
+	# mixin for writing Wavefront Object data
+	class ObjBaseExportMixin():
+
+
+
+### Those files are run as scripts from a button each.
+### They use the right combination of extraction and export mixins,
+### and let them to the work.
+### All three are built as the last one illustrates.
+
+export_rad_topo.py
+	class RadTopoExportContext(TopoExportContext,
+			RadBaseExportMixin): pass
+
+export_rad_objtopo.py
+	class RadTopoExportContext(TopoExportContext,
+			ObjBaseExportMixin, RadBaseExportMixin): pass
+
+export_rad_geom.py
+	# the export context is composed via mixins
+	class RadGeomExportContext(GeomExportContext,
+			RadBaseExportMixin): pass
+	# config dialog needs to be defined somewhere
+	config = config_dialog()
+	context = RadGeomExportContext(doc, config)
+	exporter = CustomExporter(doc, context)
+	exporter.Export(doc.ActiveView)
+
+
+
+

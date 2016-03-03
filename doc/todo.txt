@@ -1,0 +1,69 @@
+To Do
+=====
+
+Structural tasks
+
+ * Refactor into an external add-in
+ * Refactor into a modular system, seperating any Radiance specific code
+   from the framework, so it may be more easily adapted to export other
+   formats.
+ * Dialog box to configure output interactively
+ * Create a test model to systematically demonstrate that all geometry types
+   are exported correctly in all possible configurations and combinations.
+ * Alternative primitive naming options (substitution patterns)
+ * Possibly split up the output into several files (eg. by level) 
+
+Content handling
+
+ * Export RPCs in some way
+ * Export partial RevolvedFaces as rectangles instead of triangles.
+ * Handle regions (parts of a surface using different color/material)
+ * Export unmodified (other than positioning/scaling) Family instances as
+   seperate objects to be included via replmarks.
+ * Export (sufficiently large) meshes other than topography as Wavefront
+   Object Files.
+ * Export normals for curved surfaces (other than obj meshes) for smoothing.
+ * Make sure that all output surfaces are oriented the right way.
+ * Export material properties in addition to the names.
+ * Export light sources (not just lamp geometry).
+ * Export views.
+ * others?
+
+
+Issues to Solve
+===============
+
+I don't have access to a Revit installation anymore for the time beeing.
+Further development of RRadout will therefore depend on contributions from others.
+If you think you can solve any of the issues mentioned here, or add one of
+the missing features above, please don't hesitate!
+
+ * The exporter is currently an "Application Macro", which is rather clumsy.
+   There seems to be a way to make it an external installable with a ribbon
+   menu by means of the Revit Python Shell extension, but I had no
+   opportunity yet to experiment with that.
+
+ * It's not always easily possible to figure out on which level a certain
+   element resides (assuming they are associated with a level at all).
+
+ * Small objects with fine detail may result in many zero-area polygons. It
+   seems that Revit may produce incorrect triangulation when the resulting
+   mesh is very crowded. But I had no chance yet to figure out the reasons
+   for this, or whether actually Revit or me are to blame.
+
+ * The primitive IDs and modifier names created by RRadout can get extremely
+   long and descriptive (based on Revit Level, Family/Type, and Material
+   names). But to maintain sufficiently practical granularity in material
+   assignment, there is no easy way around that. Any third party application
+   importing such files would be well advised to apply some reasonable
+   substitution into shorter and more readable names. Maybe a seperate
+   module applying substitution rules could be created. Note that those
+   names currently may include non-ASCII characters, which is not a problem
+   for Radiance, but may still be confusing.
+
+ * In some cases, tessellating the two curve edges of a partial
+   CylindricalFace does not result in the same number of vertices. I haven't
+   isolated such an object to analyze the reason. Most likely the resulting
+   output is currently incorrect in this case (missing a triangle and/or
+   rectangles not parallel to axis). 
+
