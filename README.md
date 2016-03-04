@@ -27,9 +27,9 @@ Basic features of RRadout are:
 	</li>
 	<li> Export in metric or imperial units (configured in code)
 	</li>
-	<li> Seperate function for exporting topography meshes as triangles.
+	<li> Separate function for exporting topography meshes as triangles.
 	</li>
-	<li> Seperate function for exporting topography meshes as Wavefront
+	<li> Separate function for exporting topography meshes as Wavefront
 		Object files for use with obj2mesh (with normals for smoothing and
 		UV-coordinates scaled to model units).
 	</li>
