@@ -19,7 +19,7 @@ Content handling
  * Export partial RevolvedFaces as rectangles instead of triangles.
  * Handle regions (parts of a surface using different color/material)
  * Export unmodified (other than positioning/scaling) Family instances as
-   seperate objects to be included via replmarks.
+   separate objects to be included via replmarks.
  * Export (sufficiently large) meshes other than topography as Wavefront
    Object Files.
  * Export normals for curved surfaces (other than obj meshes) for smoothing.
@@ -56,7 +56,7 @@ the missing features above, please don't hesitate!
    names). But to maintain sufficiently practical granularity in material
    assignment, there is no easy way around that. Any third party application
    importing such files would be well advised to apply some reasonable
-   substitution into shorter and more readable names. Maybe a seperate
+   substitution into shorter and more readable names. Maybe a separate
    module applying substitution rules could be created. Note that those
    names currently may include non-ASCII characters, which is not a problem
    for Radiance, but may still be confusing.

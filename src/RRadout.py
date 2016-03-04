@@ -899,7 +899,7 @@ class _MyExportContext(_RadianceBaseExportContext):
 		return RenderNodeAction.Proceed
 	def OnLinkEnd(self, node): pass
 	def OnMaterial(self, node): pass
-	def OnPolymesh(self, node): pass # seperate function above
+	def OnPolymesh(self, node): pass # separate function above
 	def OnRPC(self, node): pass
 	def OnViewBegin(self, node): return RenderNodeAction.Proceed
 	def OnViewEnd(self, node): pass
